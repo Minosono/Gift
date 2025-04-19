@@ -1,21 +1,20 @@
-/* Basis-Reset und Schriftarten */
+/* Basis-Reset und Schriftarten (wie vorher) */
 :root {
     --primary-color: #FF6B6B; /* Festliches Rot/Pink */
     --secondary-color: #FFD166; /* Warmes Gelb/Gold */
     --accent-color: #06D6A0; /* Frisches Grün/Türkis */
     --text-color: #333;
-    --bg-color: #FFF8F0; /* Leicht cremiger Hintergrund */
+    --bg-color: #FFF8F0;
     --card-bg: #ffffff;
+    --wrap-color-1: #a8dff7; /* Helleres Blau für Geschenkpapier */
+    --wrap-color-2: #77c1e8; /* Dunkleres Blau */
+
 
     --font-main: 'Poppins', sans-serif;
     --font-headline: 'Dancing Script', cursive;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-main);
@@ -24,160 +23,209 @@ body {
     line-height: 1.6;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Oben starten, damit man ggf. scrollen kann */
     min-height: 100vh;
-    padding: 20px; /* Abstand zum Rand auf kleinen Geräten */
+    padding: 20px;
+    /* Hintergrund-Gradient für festlicheren Look */
+    background: linear-gradient(180deg, var(--bg-color) 0%, #fff0f5 100%);
 }
 
 .container {
     background-color: var(--card-bg);
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Sorgt dafür, dass Ecken wirklich rund sind */
-    max-width: 700px; /* Maximale Breite für Desktops */
-    width: 100%; /* Nimmt verfügbaren Platz bis max-width */
+    overflow: hidden;
+    max-width: 700px;
+    width: 100%;
     text-align: center;
+    margin-top: 30px; /* Etwas Abstand oben */
+    margin-bottom: 30px; /* Etwas Abstand unten */
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Header */
+/* Header (wie vorher) */
 .birthday-header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     padding: 40px 20px;
 }
+.birthday-header h1 { font-family: var(--font-headline); font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
+.birthday-header .subtitle { font-size: 1.2em; font-weight: 400; opacity: 0.9; }
 
-.birthday-header h1 {
-    font-family: var(--font-headline);
-    font-size: 2.8em; /* Größe angepasst */
-    margin-bottom: 10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-.birthday-header .subtitle {
-    font-size: 1.2em;
-    font-weight: 400;
-    opacity: 0.9;
-}
-
-/* Geschenk-Bereich */
+/* Geschenk-Bereich & Enthüllung */
 .gift-section {
-    padding: 30px 25px;
+    padding: 40px 25px; /* Mehr Platz */
+    position: relative; /* Für das Overlay/den Button */
 }
 
-.gift-card {
-    background-color: #fff; /* Kann auch leicht abgetönt sein */
-    /* Kein extra Schatten nötig, da es Teil des Containers ist */
-    padding: 20px;
+#gift-wrapper {
+     /* Nimmt den Platz ein, bis das Geschenk da ist */
+     min-height: 150px; /* Damit es nicht leer aussieht */
+     display: flex;
+     justify-content: center;
+     align-items: center;
 }
 
-.gift-card h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 1.8em;
-}
-
-.gift-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    aspect-ratio: 16 / 9; /* Sichert ein gutes Verhältnis */
-    object-fit: cover; /* Sorgt dafür, dass das Bild den Bereich füllt */
-}
-
-.gift-card p {
-    margin-bottom: 15px;
-    font-size: 1.1em;
-}
-
-.gift-card .highlight {
-    font-weight: bold;
-    color: var(--accent-color);
-    font-size: 1.2em;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    padding: 10px;
-    background-color: #f0fdfa; /* Leichter Hintergrund zur Hervorhebung */
-    border-left: 5px solid var(--accent-color);
-    text-align: left; /* Bessere Lesbarkeit für längeren Text */
-    border-radius: 5px;
-}
-
-.gift-card .highlight strong {
-     color: var(--accent-color); /* Stellt sicher, dass die Farbe passt */
-}
-
-/* Call-to-Action Button */
-.cta-button {
-    background-color: var(--primary-color);
+.gift-wrap-button {
+    background: linear-gradient(45deg, var(--wrap-color-1), var(--wrap-color-2));
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.1em;
+    padding: 25px 40px;
+    font-size: 1.3em;
     font-weight: bold;
-    border-radius: 50px; /* Stark abgerundet */
+    border-radius: 15px; /* Eher wie ein Paket */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    transform: scale(1); /* Startgröße */
 }
 
-.cta-button:hover {
-    background-color: #E65C5C; /* Etwas dunkler beim Hover */
-    transform: translateY(-2px); /* Leichter Anhebe-Effekt */
+.gift-wrap-button:hover {
+    transform: scale(1.05); /* Größer beim Hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.cta-button:active {
-     transform: translateY(1px); /* Klick-Effekt */
+.gift-wrap-button:active {
+     transform: scale(0.95); /* Klick-Effekt */
+}
+
+/* Klassen für die Sichtbarkeit */
+.hidden {
+    display: none; /* Komplett ausblenden */
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.visible {
+    display: block; /* Wieder anzeigen */
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Styling für das enthüllte Geschenk */
+#gift-content {
+    /* Übergang ist im hidden/visible definiert */
+}
+
+#gift-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 2em; /* Etwas größer */
+}
+
+.gift-list-card {
+    background-color: #f0fdfa; /* Leichter Akzent-Hintergrund */
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    text-align: left; /* Bessere Lesbarkeit der Liste */
+    border: 1px dashed var(--accent-color); /* Gestrichelter Rand */
+}
+
+.gift-list-card h3 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.gift-list {
+    list-style-position: inside; /* Nummern innerhalb */
+    margin-left: 0; /* Kein linker Einzug durch list-style */
+    padding-left: 0;
+}
+
+.gift-list li {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+.gift-list li::marker {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.gift-list strong {
+    color: var(--primary-color);
+}
+.gift-list li br { /* Kleiner Abstand vor dem Kommentar */
+    content: "";
+    display: block;
+    margin-bottom: 3px;
 }
 
 
-/* Anleitungsteil */
-.how-to {
-    background-color: #f9f9f9; /* Leicht anderer Hintergrund */
-    padding: 30px 25px;
-    border-top: 1px solid #eee;
+/* Anleitung und Links */
+.how-to, .reminder-section {
+    background-color: #fdfdfd; /* Sehr heller Hintergrund */
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border-top: 2px solid var(--secondary-color);
 }
 
-.how-to h3 {
+.how-to h3, .reminder-section h3 {
     color: var(--secondary-color);
     margin-bottom: 15px;
     font-size: 1.5em;
 }
 
-.how-to p {
-     font-size: 1em;
+.link-button {
+    display: inline-block; /* Wichtig für Padding/Margin */
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none; /* Kein Unterstrich für Links */
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+.link-button:hover {
+    background-color: #05B38A; /* Etwas dunkler */
+    transform: translateY(-2px);
+}
+.link-button:active {
+     transform: translateY(1px);
+}
 
-/* Footer */
+.link-button.secondary {
+    background-color: var(--secondary-color);
+}
+.link-button.secondary:hover {
+    background-color: #E6B856;
+}
+
+.reminder-info {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 8px;
+}
+
+/* Footer (wie vorher) */
 footer {
     background-color: #f1f1f1;
     padding: 20px;
     font-size: 0.9em;
     color: #555;
+    border-top: 1px solid #ddd;
 }
 
-/* Responsiveness (Mobile First Ansatz ist schon in den Basis-Styles) */
-
-/* Größere Bildschirme (Tablets und Desktops) */
+/* Responsiveness */
 @media (min-width: 600px) {
-    .birthday-header h1 {
-        font-size: 3.5em; /* Größere Überschrift auf größeren Screens */
-    }
-    .gift-card p {
-        font-size: 1.15em; /* Leicht größerer Text */
-    }
-     .gift-card .highlight {
-        font-size: 1.25em; /* Leicht größerer Highlight-Text */
-    }
-    .container {
-         padding: 0; /* Kein Außenpadding mehr, da innen gepadded wird */
-    }
+    .birthday-header h1 { font-size: 3.5em; }
+    .gift-wrap-button { font-size: 1.5em; padding: 30px 50px;}
+    #gift-content h2 { font-size: 2.3em; }
+    .gift-list li { font-size: 1.15em; }
 }
 
-/* Fade-In Animation */
+/* Fade-In Animation (wie vorher) */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
