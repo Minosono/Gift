@@ -1,0 +1,184 @@
+/* Basis-Reset und Schriftarten */
+:root {
+    --primary-color: #FF6B6B; /* Festliches Rot/Pink */
+    --secondary-color: #FFD166; /* Warmes Gelb/Gold */
+    --accent-color: #06D6A0; /* Frisches Grün/Türkis */
+    --text-color: #333;
+    --bg-color: #FFF8F0; /* Leicht cremiger Hintergrund */
+    --card-bg: #ffffff;
+
+    --font-main: 'Poppins', sans-serif;
+    --font-headline: 'Dancing Script', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Abstand zum Rand auf kleinen Geräten */
+}
+
+.container {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Sorgt dafür, dass Ecken wirklich rund sind */
+    max-width: 700px; /* Maximale Breite für Desktops */
+    width: 100%; /* Nimmt verfügbaren Platz bis max-width */
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Header */
+.birthday-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 40px 20px;
+}
+
+.birthday-header h1 {
+    font-family: var(--font-headline);
+    font-size: 2.8em; /* Größe angepasst */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.birthday-header .subtitle {
+    font-size: 1.2em;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Geschenk-Bereich */
+.gift-section {
+    padding: 30px 25px;
+}
+
+.gift-card {
+    background-color: #fff; /* Kann auch leicht abgetönt sein */
+    /* Kein extra Schatten nötig, da es Teil des Containers ist */
+    padding: 20px;
+}
+
+.gift-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.gift-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    aspect-ratio: 16 / 9; /* Sichert ein gutes Verhältnis */
+    object-fit: cover; /* Sorgt dafür, dass das Bild den Bereich füllt */
+}
+
+.gift-card p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.gift-card .highlight {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #f0fdfa; /* Leichter Hintergrund zur Hervorhebung */
+    border-left: 5px solid var(--accent-color);
+    text-align: left; /* Bessere Lesbarkeit für längeren Text */
+    border-radius: 5px;
+}
+
+.gift-card .highlight strong {
+     color: var(--accent-color); /* Stellt sicher, dass die Farbe passt */
+}
+
+/* Call-to-Action Button */
+.cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 50px; /* Stark abgerundet */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cta-button:hover {
+    background-color: #E65C5C; /* Etwas dunkler beim Hover */
+    transform: translateY(-2px); /* Leichter Anhebe-Effekt */
+}
+
+.cta-button:active {
+     transform: translateY(1px); /* Klick-Effekt */
+}
+
+
+/* Anleitungsteil */
+.how-to {
+    background-color: #f9f9f9; /* Leicht anderer Hintergrund */
+    padding: 30px 25px;
+    border-top: 1px solid #eee;
+}
+
+.how-to h3 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.how-to p {
+     font-size: 1em;
+}
+
+
+/* Footer */
+footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Responsiveness (Mobile First Ansatz ist schon in den Basis-Styles) */
+
+/* Größere Bildschirme (Tablets und Desktops) */
+@media (min-width: 600px) {
+    .birthday-header h1 {
+        font-size: 3.5em; /* Größere Überschrift auf größeren Screens */
+    }
+    .gift-card p {
+        font-size: 1.15em; /* Leicht größerer Text */
+    }
+     .gift-card .highlight {
+        font-size: 1.25em; /* Leicht größerer Highlight-Text */
+    }
+    .container {
+         padding: 0; /* Kein Außenpadding mehr, da innen gepadded wird */
+    }
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
