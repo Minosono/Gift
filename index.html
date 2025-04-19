@@ -3,45 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alles Liebe zum Geburtstag, Dagmar!</title>
+    <title>Alles Liebe zum Geburtstag, Mama!</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts für modernes Aussehen -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <!-- Canvas-Confetti Bibliothek (für den coolen Effekt) -->
+    <!-- Canvas-Confetti Bibliothek -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
+    <!-- Eigenes Script -->
     <script src="script.js" defer></script>
 </head>
 <body>
 
     <div class="container">
         <header class="birthday-header">
-            <h1>Alles Liebe zum Geburtstag, liebe Dagmar!</h1>
-            <p class="subtitle">Ich wünsche dir einen wundervollen Tag!</p>
+            <h1>Alles Liebe zum Geburtstag, liebe Mama!</h1>
+            <p class="subtitle">Ich wünsche dir den allerschönsten Tag voller Freude!</p>
         </header>
 
         <main class="gift-section">
-            <div class="gift-card">
-                <h2>Deine Geburtstagsüberraschung!</h2>
-                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="Feierliches Geschenk-Bild" class="gift-image">
-                <p>Zu deinem Ehrentag habe ich mir etwas Besonderes überlegt:</p>
-                <p class="highlight">Du darfst dir <strong>drei wunderschöne Legami Stifte</strong> deiner Wahl aussuchen!</p>
-                <p>Egal ob aus der aktuellen oder einer kommenden Kollektion – such dir einfach deine Favoriten aus.</p>
+            <!-- Das "Geschenkpapier" - der Button zum Enthüllen -->
+            <div id="gift-wrapper">
+                <button id="reveal-gift-button" class="cta-button gift-wrap-button">
+                    🎁 Hier klicken für deine Überraschung! 🎁
+                </button>
+            </div>
 
-                <button id="celebrate-button" class="cta-button">Lass uns feiern!</button>
+            <!-- Das eigentliche Geschenk, initial versteckt -->
+            <div id="gift-content" class="hidden">
+                <h2>Deine Geburtstagsüberraschung!</h2>
+                <p>Ich habe mir etwas Besonderes überlegt, um dir eine Freude zu machen:</p>
+
+                <div class="gift-list-card">
+                    <h3>Du darfst dir aussuchen:</h3>
+                    <ol class="gift-list">
+                        <li>Einen wundervollen <strong>Legami Stift</strong> deiner Wahl! ✨ <br>(Egal ob aktuelle oder kommende Kollektion)</li>
+                        <li>Noch einen tollen <strong>Legami Stift</strong> deiner Wahl! ✍️ <br>(Such dir deinen zweiten Liebling aus!)</li>
+                        <li>Und jetzt halt dich fest... <br><strong>NOCH einen fantastischen Legami Stift!!!</strong> 🎉 <br>(Ja, wirklich! Drei Stück nur für dich!)</li>
+                    </ol>
+                </div>
+
+                 <div class="how-to">
+                    <h3>Wie & Wo?</h3>
+                    <p>Schau dich ganz in Ruhe bei Legami um und sag mir einfach Bescheid, welche drei Stifte es sein sollen. Ich kümmere mich um den Rest!</p>
+                    <a href="https://www.legami.com/de_de/papierwaren/schreibwaren/loschbare-stifte.html" target="_blank" class="link-button">
+                        Stöbere hier bei Legami
+                    </a>
+                 </div>
+
+                 <div class="reminder-section">
+                     <h3>Nicht vergessen?</h3>
+                     <p>Speichere dir eine kleine Erinnerung im Kalender:</p>
+                     <button id="reminder-button" class="link-button secondary">
+                        Erinnerung speichern (.ics)
+                     </button>
+                     <p class="reminder-info">(Lädt eine Kalenderdatei herunter)</p>
+                 </div>
             </div>
         </main>
 
-        <section class="how-to">
-            <h3>Wie funktioniert's?</h3>
-            <p>Schau dich ganz in Ruhe bei Legami um (online oder im Geschäft) und sag mir einfach Bescheid, welche drei Stifte dein Herz höherschlagen lassen. Ich kümmere mich dann um den Rest!</p>
-        </section>
-
         <footer>
-            <p>Mit den herzlichsten Wünschen,<br>[Dein Name/Deine Beziehung zu Dagmar, z.B. Deine Freundin XYZ]</p>
+            <p>In Liebe,<br>Dein[e] [Dein Name]</p>
         </footer>
     </div>
+
+    <!-- Unsichtbares Link-Element für den ICS-Download -->
+    <a id="download-link" style="display: none;"></a>
 
 </body>
 </html>
